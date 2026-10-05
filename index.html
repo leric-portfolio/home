@@ -48,8 +48,14 @@ body.loaded .preloader{ transform:translateY(-100%); transition:transform .7s cu
 .nav__center{ display:flex; gap:26px; justify-content:center; }
 .nav__center a{ color:var(--mute); transition:color .2s; }
 .nav__center a:hover, .nav a.active{ color:var(--ink); }
-.nav__right{ display:flex; gap:22px; justify-content:flex-end; color:var(--mute); }
+.nav__right{ display:flex; gap:18px; justify-content:flex-end; align-items:center; color:var(--mute); }
 .nav__right a:hover{ color:var(--ink); }
+.lang{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; letter-spacing:.04em; }
+.lang button{ background:transparent; border:0; padding:0; cursor:pointer; color:var(--mute); font:inherit; letter-spacing:inherit; transition:color .2s; }
+.lang button:hover{ color:var(--ink); }
+.lang button.active{ color:var(--ink); }
+.lang__sep{ color:var(--mute); opacity:.5; }
+.lang--menu{ margin-top:28px; font-size:16px; gap:10px; }
 /* hamburger (solo mobile) */
 .nav__burger{ display:none; width:34px; height:34px; align-items:center; justify-content:center; background:transparent; border:0; cursor:pointer; padding:0; z-index:110; }
 .nav__burger span{ position:relative; width:22px; height:1.5px; background:var(--ink); transition:background .2s; }
@@ -255,12 +261,15 @@ body.loaded .preloader{ transform:translateY(-100%); transition:transform .7s cu
 <nav class="nav" id="nav">
   <a href="#home" class="nav__mark" data-nav>Leric Taboboca</a>
   <div class="nav__center">
-    <a href="#lavori" data-nav>Lavori</a>
-    <a href="#design" data-nav>Design</a>
-    <a href="#chi-sono" data-nav>Chi sono</a>
+    <a href="#lavori" data-nav data-i18n="nav-lavori">Lavori</a>
+    <a href="#design" data-nav data-i18n="nav-design">Design</a>
+    <a href="#chi-sono" data-nav data-i18n="nav-chisono">Chi sono</a>
   </div>
   <div class="nav__right">
-    <a href="#contatti" data-nav>Contatti</a>
+    <a href="#contatti" data-nav data-i18n="nav-contatti">Contatti</a>
+    <div class="lang" id="langToggle" role="group" aria-label="Language">
+      <button type="button" data-l="it">IT</button><span class="lang__sep">/</span><button type="button" data-l="en">EN</button>
+    </div>
   </div>
   <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
 </nav>
@@ -268,23 +277,26 @@ body.loaded .preloader{ transform:translateY(-100%); transition:transform .7s cu
 <!-- MENU MOBILE -->
 <div class="menu" id="menu">
   <nav class="menu__links">
-    <a href="#lavori" data-nav>Lavori</a>
-    <a href="#design" data-nav>Design</a>
-    <a href="#chi-sono" data-nav>Chi sono</a>
-    <a href="#contatti" data-nav>Contatti</a>
+    <a href="#lavori" data-nav data-i18n="nav-lavori">Lavori</a>
+    <a href="#design" data-nav data-i18n="nav-design">Design</a>
+    <a href="#chi-sono" data-nav data-i18n="nav-chisono">Chi sono</a>
+    <a href="#contatti" data-nav data-i18n="nav-contatti">Contatti</a>
+    <div class="lang lang--menu" id="langToggleM" role="group" aria-label="Language">
+      <button type="button" data-l="it">IT</button><span class="lang__sep">/</span><button type="button" data-l="en">EN</button>
+    </div>
   </nav>
 </div>
 
 <!-- HOME -->
 <section class="view view-home" id="view-home">
   <div class="view-inner wrap">
-    <h1 class="hero__statement">
+    <h1 class="hero__statement" data-i18n="hero">
       <span class="rise"><i>Videomaker e fotografo a Bologna.</i></span>
       <span class="rise"><i class="mut">Trasformo momenti in storie — per lo sport, i brand e chi ha qualcosa da raccontare.</i></span>
     </h1>
     <div class="hero__row">
-      <a href="#lavori" class="hero__jump fade" data-nav>Guarda i lavori <span class="arrow">→</span></a>
-      <div class="hero__meta label fade">Bologna, Italia<br>Disponibile su richiesta</div>
+      <a href="#lavori" class="hero__jump fade" data-nav data-i18n="hero-jump">Guarda i lavori <span class="arrow">→</span></a>
+      <div class="hero__meta label fade" data-i18n="hero-meta">Bologna, Italia<br>Disponibile su richiesta</div>
     </div>
   </div>
 </section>
@@ -293,19 +305,19 @@ body.loaded .preloader{ transform:translateY(-100%); transition:transform .7s cu
 <section class="view view-lavori" id="view-lavori">
   <div class="view-inner wrap">
     <div class="sec-head reveal">
-      <h1>Lavori</h1>
-      <span class="label">Seleziona una categoria</span>
+      <h1 data-i18n="lavori-h1">Lavori</h1>
+      <span class="label" data-i18n="lavori-sub">Seleziona una categoria</span>
     </div>
     <div class="work-toolbar reveal">
       <div class="filters">
-        <button class="active" data-cat="all">Tutti</button>
-        <button data-cat="sport">Sport</button>
-        <button data-cat="cultura">Cultura &amp; territorio</button>
-        <button data-cat="corporate">Corporate</button>
-        <button data-cat="brand">Brand commerciale</button>
-        <button data-cat="social">Social</button>
-        <button data-cat="podcast">Podcast</button>
-        <button data-cat="ristorazione">Ristorazione</button>
+        <button class="active" data-cat="all" data-i18n="f-all">Tutti</button>
+        <button data-cat="sport" data-i18n="f-sport">Sport</button>
+        <button data-cat="cultura" data-i18n="f-cultura">Cultura &amp; territorio</button>
+        <button data-cat="corporate" data-i18n="f-corporate">Corporate</button>
+        <button data-cat="brand" data-i18n="f-brand">Brand commerciale</button>
+        <button data-cat="social" data-i18n="f-social">Social</button>
+        <button data-cat="podcast" data-i18n="f-podcast">Podcast</button>
+        <button data-cat="ristorazione" data-i18n="f-ristorazione">Ristorazione</button>
       </div>
     </div>
     <div class="works" id="works"><!-- generato via JS --></div>
@@ -315,7 +327,7 @@ body.loaded .preloader{ transform:translateY(-100%); transition:transform .7s cu
 <!-- PROGETTO (pagina generata quando clicchi un progetto) -->
 <section class="view view-progetto" id="view-progetto">
   <div class="view-inner wrap">
-    <a href="#lavori" class="proj-back reveal" data-nav>← Torna ai lavori</a>
+    <a href="#lavori" class="proj-back reveal" data-nav data-i18n="back-lavori">← Torna ai lavori</a>
     <div class="sec-head reveal"><h1 id="projTitle"></h1><span class="label" id="projCat"></span></div>
     <p class="proj-desc reveal" id="projDesc"></p>
     <div class="proj-grid reveal" id="projGrid"></div>
@@ -326,14 +338,14 @@ body.loaded .preloader{ transform:translateY(-100%); transition:transform .7s cu
 <section class="view view-design" id="view-design">
   <div class="view-inner wrap">
     <div class="sec-head reveal">
-      <h1>Design</h1>
-      <span class="label">Grafica · Editoriale · Wayfinding</span>
+      <h1 data-i18n="design-h1">Design</h1>
+      <span class="label" data-i18n="design-sub">Grafica · Editoriale · Wayfinding</span>
     </div>
     <div class="filters reveal">
-      <button class="active" data-dcat="all">Tutti</button>
-      <button data-dcat="brand">Brand &amp; identità</button>
-      <button data-dcat="print">Editoriale / stampa</button>
-      <button data-dcat="wayfinding">Wayfinding</button>
+      <button class="active" data-dcat="all" data-i18n="df-all">Tutti</button>
+      <button data-dcat="brand" data-i18n="df-brand">Brand &amp; identità</button>
+      <button data-dcat="print" data-i18n="df-print">Editoriale / stampa</button>
+      <button data-dcat="wayfinding" data-i18n="df-wayfinding">Wayfinding</button>
     </div>
     <div class="dgrid" id="dgrid"><!-- generato via JS --></div>
   </div>
@@ -342,7 +354,7 @@ body.loaded .preloader{ transform:translateY(-100%); transition:transform .7s cu
 <!-- DESIGN — pagina del singolo progetto -->
 <section class="view view-design-proj" id="view-design-proj">
   <div class="view-inner wrap">
-    <a href="#design" class="proj-back reveal" data-nav>← Torna al design</a>
+    <a href="#design" class="proj-back reveal" data-nav data-i18n="back-design">← Torna al design</a>
     <div class="sec-head reveal"><h1 id="dTitle"></h1><span class="label" id="dCat"></span></div>
     <p class="proj-desc reveal" id="dDesc"></p>
     <div class="dproj-gallery reveal" id="dGallery"></div>
@@ -352,43 +364,43 @@ body.loaded .preloader{ transform:translateY(-100%); transition:transform .7s cu
 <!-- CHI SONO -->
 <section class="view view-chisono" id="view-chi-sono">
   <div class="view-inner wrap">
-    <p class="manifesto reveal">Da tre anni racconto per immagini. <span class="mut">Sport, brand, persone: cerco la stessa cosa ovunque — il momento in cui una scena diventa una storia.</span></p>
+    <p class="manifesto reveal" data-i18n="manifesto">Da tre anni racconto per immagini. <span class="mut">Sport, brand, persone: cerco la stessa cosa ovunque — il momento in cui una scena diventa una storia.</span></p>
 
-    <p class="about__bio reveal">Lavoro come <strong>videomaker e fotografo freelance</strong> a Bologna. Tra le collaborazioni più continue, la <strong>Fortitudo Pallacanestro Bologna</strong>, dove curo riprese e contenuti social a bordo campo. Mi muovo tra sport, corporate, brand e social, con un occhio che viene dalla fotografia e una testa da ingegnere — abituata a smontare i problemi e rimetterli insieme.</p>
+    <p class="about__bio reveal" data-i18n="bio">Lavoro come <strong>videomaker e fotografo freelance</strong> a Bologna. Tra le collaborazioni più continue, la <strong>Fortitudo Pallacanestro Bologna</strong>, dove curo riprese e contenuti social a bordo campo. Mi muovo tra sport, corporate, brand e social, con un occhio che viene dalla fotografia e una testa da ingegnere — abituata a smontare i problemi e rimetterli insieme.</p>
 
     <div class="passion reveal">
-      <div class="passion__label label">Fuori dal set</div>
+      <div class="passion__label label" data-i18n="passion-label">Fuori dal set</div>
       <div>
-        <p class="passion__lead">Quando non filmo, volo.</p>
-        <p class="passion__body">Sto conseguendo il <strong>certificato VDS</strong> su un <strong>Tecnam P92</strong>, da Ozzano dell'Emilia, con l'idea di arrivare un giorno all'ATPL. Non è un servizio che offro: è la cosa che mi ricorda perché mi piace inquadrare. Cambiare quota, in fondo, è solo un altro modo di scegliere una prospettiva.</p>
+        <p class="passion__lead" data-i18n="passion-lead">Quando non filmo, volo.</p>
+        <p class="passion__body" data-i18n="passion-body">Sto conseguendo il <strong>certificato VDS</strong> su un <strong>Tecnam P92</strong>, da Ozzano dell'Emilia, con l'idea di arrivare un giorno all'ATPL. Non è un servizio che offro: è la cosa che mi ricorda perché mi piace inquadrare. Cambiare quota, in fondo, è solo un altro modo di scegliere una prospettiva.</p>
       </div>
     </div>
 
-    <div class="label reveal" style="margin-bottom:16px">Servizi</div>
+    <div class="label reveal" style="margin-bottom:16px" data-i18n="servizi">Servizi</div>
     <div class="svc reveal">
       <div class="svc__no">01</div>
-      <div><div class="svc__name">Video</div>
-        <ul class="svc__list"><li>Sport &amp; highlight</li><li>Corporate</li><li>Brand &amp; spot</li><li>Social &amp; reel</li></ul></div>
+      <div><div class="svc__name" data-i18n="svc1-n">Video</div>
+        <ul class="svc__list" data-i18n="svc1-l"><li>Sport &amp; highlight</li><li>Corporate</li><li>Brand &amp; spot</li><li>Social &amp; reel</li></ul></div>
     </div>
     <div class="svc reveal">
       <div class="svc__no">02</div>
-      <div><div class="svc__name">Fotografia</div>
-        <ul class="svc__list"><li>Sport &amp; azione</li><li>Ritratti</li><li>Eventi</li><li>Editoriale</li></ul></div>
+      <div><div class="svc__name" data-i18n="svc2-n">Fotografia</div>
+        <ul class="svc__list" data-i18n="svc2-l"><li>Sport &amp; azione</li><li>Ritratti</li><li>Eventi</li><li>Editoriale</li></ul></div>
     </div>
     <div class="svc reveal">
       <div class="svc__no">03</div>
-      <div><div class="svc__name">Post-produzione</div>
-        <ul class="svc__list"><li>Montaggio</li><li>Color grading</li><li>Formati social</li></ul></div>
+      <div><div class="svc__name" data-i18n="svc3-n">Post-produzione</div>
+        <ul class="svc__list" data-i18n="svc3-l"><li>Montaggio</li><li>Color grading</li><li>Formati social</li></ul></div>
     </div>
 
     <div class="clients reveal">
-      <div class="label">Con chi ho lavorato</div>
+      <div class="label" data-i18n="clients-label">Con chi ho lavorato</div>
       <!-- TODO: sostituisci con i tuoi clienti reali -->
       <div class="clients__row">
         <a href="#lavori" data-nav>Fortitudo Pallacanestro Bologna</a><span class="sep">,&nbsp;</span>
-        <span>realtà sportive</span><span class="sep">,&nbsp;</span>
-        <span>aziende</span><span class="sep">,&nbsp;</span>
-        <span>brand locali</span><span class="sep">.</span>
+        <span data-i18n="cl-sport">realtà sportive</span><span class="sep">,&nbsp;</span>
+        <span data-i18n="cl-az">aziende</span><span class="sep">,&nbsp;</span>
+        <span data-i18n="cl-brand">brand locali</span><span class="sep">.</span>
       </div>
     </div>
   </div>
@@ -397,7 +409,7 @@ body.loaded .preloader{ transform:translateY(-100%); transition:transform .7s cu
 <!-- CONTATTI -->
 <section class="view view-contatti" id="view-contatti">
   <div class="view-inner wrap">
-    <p class="contact__big reveal">Hai un progetto<br>in mente?</p>
+    <p class="contact__big reveal" data-i18n="contact-big">Hai un progetto<br>in mente?</p>
     <a class="contact__mail reveal" href="mailto:lerict@outlook.it?subject=Contatto">lerict@outlook.it</a>
     <div class="contact__socials reveal label">
       <a href="https://instagram.com/leric_tbb" target="_blank" rel="noopener">Instagram</a>
@@ -411,7 +423,7 @@ body.loaded .preloader{ transform:translateY(-100%); transition:transform .7s cu
 <footer class="footer wrap">
   <span>Leric Taboboca · Bologna, Italia</span>
   <span>© <span id="year"></span></span>
-  <span>Fatto con cura</span>
+  <span data-i18n="footer-made">Fatto con cura</span>
 </footer>
 
 
@@ -424,7 +436,7 @@ body.loaded .preloader{ transform:translateY(-100%); transition:transform .7s cu
     <div class="modal__info">
       <div class="modal__title" id="modalTitle"></div>
       <p class="modal__desc" id="modalDesc"></p>
-      <div class="modal__foot"><a class="modal__yt" id="modalYt" href="#" target="_blank" rel="noopener">Guarda su YouTube ↗</a></div>
+      <div class="modal__foot"><a class="modal__yt" id="modalYt" href="#" target="_blank" rel="noopener" data-i18n="yt-link">Guarda su YouTube ↗</a></div>
     </div>
   </div>
 </div>
@@ -449,7 +461,7 @@ const PROJECTS = [
     id: "fortitudo",
     title: "Fortitudo Pallacanestro Bologna",
     cat: "sport",
-    desc: "Riprese e contenuti a bordo campo per la Fortitudo Pallacanestro Bologna: recap di stagione, hype video e social.",
+    desc: "Riprese e contenuti a bordo campo per la Fortitudo Pallacanestro Bologna: recap di stagione, hype video e social.", desc_en:"Courtside filming and content for Fortitudo Pallacanestro Bologna: season recaps, hype videos and social.",
     videos: [
       { yt:"kdg4GLLWUwg", title:"Fortitudo — Video 1", desc:"Riprese e montaggio a bordo campo. (Rinomina pure titolo e descrizione.)" },
       { yt:"QPSRRvQprPQ", title:"Fortitudo — Video 2", desc:"Riprese e montaggio a bordo campo. (Rinomina pure titolo e descrizione.)" }
@@ -458,10 +470,10 @@ const PROJECTS = [
     ]
   },
   // ---- Esempi da sostituire con i tuoi progetti reali ----
-  { id:"wasserman", title:"Wasserman / The Team", cat:"sport", desc:"Riprese e contenuti per Wasserman / The Team. (Aggiungi qui una descrizione.)", videos:[] },
+  { id:"wasserman", title:"Wasserman / The Team", cat:"sport", desc:"Riprese e contenuti per Wasserman / The Team. (Aggiungi qui una descrizione.)", desc_en:"Filming and content for Wasserman / The Team.", videos:[] },
   { id:"appenniners", title:"Appenniners", cat:"cultura",
-    desc:"Video realizzati per la mostra «Appenniners — volti e storie di chi ha scelto l'Appennino», promossa da Città metropolitana e Comune di Bologna (Bologna Innovation Square), a corredo dei 16 ritratti fotografici di Giacomo Maestri.",
-    link:"https://appenninersmostra.bolognainnovationsquare.it/", linkLabel:"Sito della mostra",
+    desc:"Video realizzati per la mostra «Appenniners — volti e storie di chi ha scelto l'Appennino», promossa da Città metropolitana e Comune di Bologna (Bologna Innovation Square), a corredo dei 16 ritratti fotografici di Giacomo Maestri.", desc_en:"Videos made for the exhibition «Appenniners — faces and stories of those who chose the Apennines», promoted by the Metropolitan City and the Municipality of Bologna (Bologna Innovation Square), alongside the 16 photographic portraits by Giacomo Maestri.",
+    link:"https://appenninersmostra.bolognainnovationsquare.it/", linkLabel:"Sito della mostra", linkLabel_en:"Exhibition website",
     videos:[
       { yt:"u_xMNWOqQaI", title:"Storia 01", desc:"" },
       { yt:"hfWEzE-e3qw", title:"Storia 02", desc:"" },
@@ -476,36 +488,36 @@ const PROJECTS = [
       { yt:"4KGc_ZcoWRs", title:"Storia 11", desc:"" }
     ] },
   { id:"bbs", title:"BBS Bologna Business School", cat:"corporate",
-    desc:"Video di teambuilding per la BBS — Bologna Business School: gli studenti di un master reinterpretano «Seasons of Love» trasformandola in «Seasons of Growth».",
+    desc:"Video di teambuilding per la BBS — Bologna Business School: gli studenti di un master reinterpretano «Seasons of Love» trasformandola in «Seasons of Growth».", desc_en:"Team-building video for BBS — Bologna Business School: master's students reinterpret «Seasons of Love», turning it into «Seasons of Growth».",
     embeds:[ { ig:"https://www.instagram.com/p/DaSOxiuDN2W/" }, { ig:"https://www.instagram.com/p/DSK-acmDJEW/" }, { ig:"https://www.instagram.com/p/DSko2oEjGMm/" } ],
     videos:[
       { yt:"xDHYprRRVwk", title:"Seasons of Growth", desc:"Teambuilding di un master BBS: da «Seasons of Love» a «Seasons of Growth»." },
       { yt:"1uAbACGOS04", title:"We Are Coesia", desc:"Video per BBS / Coesia." }
     ] },
   { id:"cesab", title:"CESAB Material Handling Europe", cat:"corporate social",
-    desc:"Contenuti corporate e social per CESAB Material Handling Europe.",
+    desc:"Contenuti corporate e social per CESAB Material Handling Europe.", desc_en:"Corporate and social content for CESAB Material Handling Europe.",
     embeds:[ { ig:"https://www.instagram.com/reel/DUz7XlwASiW/" } ],
     videos:[
       { yt:"Nztl7VYbfcs", title:"O1 + S320DN", desc:"Carrelli O1 e S320DN." },
       { yt:"jXp0jVQIe7c", title:"Dealer Meeting — Milano Marittima 2026", desc:"Recap del dealer meeting." },
       { yt:"4Kbimtowzco", title:"B4 Machine", desc:"Short verticale — carrello B4." }
     ] },
-  { id:"portico-zambeccari", title:"Portico Zambeccari", cat:"cultura social", desc:"Contenuti per Portico Zambeccari. (Aggiungi qui una descrizione.)", videos:[] },
-  { id:"cinzia", title:"Cinzia 2021 Srl", cat:"cultura social", desc:"Contenuti per Cinzia 2021 Srl.", images:[ { src:IMG_CINZIA, alt:"Cinzia — bici pieghevole" } ],
+  { id:"portico-zambeccari", title:"Portico Zambeccari", cat:"cultura social", desc:"Contenuti per Portico Zambeccari. (Aggiungi qui una descrizione.)", desc_en:"Content for Portico Zambeccari.", videos:[] },
+  { id:"cinzia", title:"Cinzia 2021 Srl", cat:"cultura social", desc:"Contenuti per Cinzia 2021 Srl.", desc_en:"Content for Cinzia 2021 Srl.", images:[ { src:IMG_CINZIA, alt:"Cinzia — bici pieghevole" } ],
     videos:[ { yt:"HOpaDG_odCE", title:"Website Cover", desc:"Video cover per il sito." } ] },
-  { id:"myes-bfc", title:"MyES x BFC", cat:"social", desc:"Contenuti social per MyES x BFC. (Aggiungi qui una descrizione.)", videos:[] },
-  { id:"bleis-hotel", title:"Bleis Hotel", cat:"brand", desc:"Contenuti per Bleis Hotel.", link:"https://www.bleishotel.com/", linkLabel:"Sito dell'hotel",
+  { id:"myes-bfc", title:"MyES x BFC", cat:"social", desc:"Contenuti social per MyES x BFC. (Aggiungi qui una descrizione.)", desc_en:"Social content for MyES x BFC.", videos:[] },
+  { id:"bleis-hotel", title:"Bleis Hotel", cat:"brand", desc:"Contenuti per Bleis Hotel.", desc_en:"Content for Bleis Hotel.", link:"https://www.bleishotel.com/", linkLabel:"Sito dell'hotel", linkLabel_en:"Hotel website",
     videos:[ { yt:"GxHXdq5aAY4", title:"Website Cover", desc:"Video cover per il sito dell'hotel." } ] },
-  { id:"incos", title:"INCOS Cosmeceutica Industriale s.r.l.", cat:"corporate", desc:"Contenuti corporate per INCOS Cosmeceutica Industriale s.r.l.",
+  { id:"incos", title:"INCOS Cosmeceutica Industriale s.r.l.", cat:"corporate", desc:"Contenuti corporate per INCOS Cosmeceutica Industriale s.r.l.", desc_en:"Corporate content for INCOS Cosmeceutica Industriale s.r.l.",
     videos:[
       { yt:"0z5eS4BLd3w", title:"Website Cover", desc:"Video cover per il sito." },
       { yt:"c-DN-SipiDI", title:"Camera Bianca", desc:"Ripresa della camera bianca / produzione." }
     ] },
-  { id:"energy-intelligence", title:"Energy Intelligence", cat:"corporate", desc:"Contenuti corporate per Energy Intelligence.",
+  { id:"energy-intelligence", title:"Energy Intelligence", cat:"corporate", desc:"Contenuti corporate per Energy Intelligence.", desc_en:"Corporate content for Energy Intelligence.",
     videos:[ { yt:"J0rvdAYpJPA", title:"Corporate Video", desc:"Video corporate." } ] },
-  { id:"braceria-san-frediano", title:"Braceria San Frediano", cat:"ristorazione", desc:"Contenuti per Braceria San Frediano. (Aggiungi qui una descrizione.)", videos:[] },
+  { id:"braceria-san-frediano", title:"Braceria San Frediano", cat:"ristorazione", desc:"Contenuti per Braceria San Frediano. (Aggiungi qui una descrizione.)", desc_en:"Content for Braceria San Frediano.", videos:[] },
   { id:"flats-service", title:"Flats Service", cat:"corporate social",
-    desc:"Contenuti corporate e social per Flats Service.",
+    desc:"Contenuti corporate e social per Flats Service.", desc_en:"Corporate and social content for Flats Service.",
     videos:[
       { yt:"E9bT1SWnTUg", title:"Corporate Video", desc:"Video corporate." },
       { yt:"mfrC-GGR1Ns", title:"MECSPE 2025", desc:"Fiera MECSPE 2025." },
@@ -513,30 +525,31 @@ const PROJECTS = [
       { yt:"j48s00SuAPM", title:"LinkedIn Video", desc:"Video per LinkedIn." }
     ] },
   { id:"eurocosmesi", title:"Eurocosmesi", cat:"corporate",
-    desc:"Contenuti corporate per Eurocosmesi.",
+    desc:"Contenuti corporate per Eurocosmesi.", desc_en:"Corporate content for Eurocosmesi.",
     videos:[ { yt:"yN-L9Ltux7c", title:"Website Cover", desc:"Video cover per il sito." } ] },
   { id:"coswell", title:"Coswell", cat:"corporate",
-    desc:"Contenuti corporate per Coswell.",
+    desc:"Contenuti corporate per Coswell.", desc_en:"Corporate content for Coswell.",
     videos:[ { yt:"Fi9K8azZGrk", title:"Interview", desc:"Intervista." } ] },
   { id:"oel-club", title:"OEL Club", cat:"social",
-    desc:"Contenuti per OEL Club.",
+    desc:"Contenuti per OEL Club.", desc_en:"Content for OEL Club.",
     videos:[ { yt:"XyfBvL1WS9Y", title:"ON Running x Ferramenta", desc:"Short verticale — evento ON Running x Ferramenta." } ] },
   { id:"bologna-xxl", title:"Bologna XXL", cat:"social",
-    desc:"Event recap per Bologna XXL.",
+    desc:"Event recap per Bologna XXL.", desc_en:"Event recap for Bologna XXL.",
     videos:[ { yt:"rdx80XsPMTg", title:"Cocktail Bar — Event Recap", desc:"Short verticale — recap evento cocktail bar." } ] },
   { id:"fila", title:"FILA", cat:"brand",
-    desc:"Contenuti brand per FILA.",
+    desc:"Contenuti brand per FILA.", desc_en:"Brand content for FILA.",
     videos:[ { yt:"6SP5nDX7yk4", title:"Women Fragrance", desc:"Short verticale — fragranza donna." } ] },
-  { id:"wolf", title:"WOLF Content & More", cat:"social", desc:"Contenuti social per WOLF Content & More.", videos:[] },
-  { id:"podflats", title:"PodFlats", cat:"podcast", desc:"Podcast PodFlats — montaggio e audio.",
+  { id:"wolf", title:"WOLF Content & More", cat:"social", desc:"Contenuti social per WOLF Content & More.", desc_en:"Social content for WOLF Content & More.", videos:[] },
+  { id:"podflats", title:"PodFlats", cat:"podcast", desc:"Podcast PodFlats — montaggio e audio.", desc_en:"PodFlats podcast — editing and audio.",
     playlists:[
       { label:"Stagione 1", id:"PLz2U2wZTSWf2_vk4PSB6fn9kKrEVMSSH-", first:"9D5rZkBDZrU" },
       { label:"Stagione 2", id:"PLSo7Iizzd7GQ", first:"St1LYzPQMyQ" }
     ], videos:[] },
-  { id:"podcast-jessica", title:"Podcast di Jessica", cat:"podcast", desc:"Podcast di Jessica — montaggio e audio.", videos:[] },
+  { id:"podcast-jessica", title:"Podcast di Jessica", cat:"podcast", desc:"Podcast di Jessica — montaggio e audio.", desc_en:"Podcast di Jessica — editing and audio.", videos:[] },
 ];
 
 const CAT_LABEL = { sport:"Sport", cultura:"Cultura & territorio", corporate:"Corporate", brand:"Brand commerciale", social:"Social", podcast:"Podcast", ristorazione:"Ristorazione" };
+const CAT_LABEL_EN = { sport:"Sport", cultura:"Culture & territory", corporate:"Corporate", brand:"Commercial brand", social:"Social", podcast:"Podcast", ristorazione:"Food & restaurants" };
 const CAT_GRAD  = { sport:"g-court", corporate:"g-dusk", brand:"g-plum", social:"g-field" };
 
 /* ============================================================
@@ -553,17 +566,18 @@ const IMG_RISORGIMENTO = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wB
 
 const DESIGN = [
   { id:"labo-hamburg", title:"LaBO Hamburg", cat:"brand",
-    desc:"Identità visiva per LaBO — Italian Street Food, Hamburg: logo, palette e applicazioni.",
+    desc:"Identità visiva per LaBO — Italian Street Food, Hamburg: logo, palette e applicazioni.", desc_en:"Visual identity for LaBO — Italian Street Food, Hamburg: logo, palette and applications.",
     images:[ { src:IMG_LABO, alt:"Logo LaBO — Italian Street Food" } ] },
   { id:"editoriale-1", title:"[Progetto editoriale]", cat:"print",
-    desc:"Impaginazione e stampa.", images:[] },
+    desc:"Impaginazione e stampa.", desc_en:"Layout and print.", images:[] },
   { id:"risorgimento", title:"Wayfinding per Risorgimento", cat:"wayfinding",
-    desc:"Sistema di segnaletica e orientamento: targhe aula, numerazione e QR.",
+    desc:"Sistema di segnaletica e orientamento: targhe aula, numerazione e QR.", desc_en:"Signage and wayfinding system: classroom plates, numbering and QR.",
     images:[ { src:IMG_RISORGIMENTO, alt:"Targa aula 1.3 — Risorgimento" } ] },
   { id:"zone-plus-hoops", title:"Zone Plus Hoops", cat:"wayfinding",
-    desc:"Segnaletica e orientamento per Zone Plus Hoops.", images:[] },
+    desc:"Segnaletica e orientamento per Zone Plus Hoops.", desc_en:"Signage and wayfinding for Zone Plus Hoops.", images:[] },
 ];
 const DCAT_LABEL = { brand:"Brand & identità", print:"Editoriale / stampa", wayfinding:"Wayfinding" };
+const DCAT_LABEL_EN = { brand:"Brand & identity", print:"Editorial / print", wayfinding:"Wayfinding" };
 
 /* ============================================================ APP ============================================================ */
 document.documentElement.classList.add('js');
@@ -572,43 +586,101 @@ const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const byId = Object.fromEntries(PROJECTS.map(p => [p.id, p]));
 const esc = s => (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const ytThumb = id => 'https://img.youtube.com/vi/'+id+'/hqdefault.jpg';
-const catLabel = cs => (cs||'').split(/\s+/).filter(Boolean).map(c => CAT_LABEL[c]||c).join(' · ');
+/* ====== i18n (IT / EN) ====== */
+let LANG='it'; try{ LANG = localStorage.getItem('lang')||'it'; }catch(e){}
+const STR = {
+  it:{ coming:"Contenuti in arrivo.", imgcoming:"Immagini in arrivo.", instagram:"Guarda su Instagram ↗", plnote:"La mostra completa: usa la lista del player per scorrere tutti i video." },
+  en:{ coming:"Coming soon.", imgcoming:"Images coming soon.", instagram:"View on Instagram ↗", plnote:"The full exhibition: use the player's list to browse all the videos." }
+};
+function tr(k){ return (STR[LANG]&&STR[LANG][k]) || STR.it[k] || ''; }
+function catLabel(cs){ const M = LANG==='en'?CAT_LABEL_EN:CAT_LABEL; return (cs||'').split(/\s+/).filter(Boolean).map(c => M[c]||CAT_LABEL[c]||c).join(' · '); }
+function dcatLabel(c){ return (LANG==='en'?DCAT_LABEL_EN:DCAT_LABEL)[c] || DCAT_LABEL[c] || ''; }
+const I18N_EN = {
+  "nav-lavori":"Work","nav-design":"Design","nav-chisono":"About","nav-contatti":"Contact",
+  "hero":"<span class=\"rise\"><i>Videomaker and photographer in Bologna.</i></span> <span class=\"rise\"><i class=\"mut\">I turn moments into stories — for sport, brands and anyone with a story to tell.</i></span>",
+  "hero-jump":"See the work <span class=\"arrow\">→</span>",
+  "hero-meta":"Bologna, Italy<br>Available on request",
+  "lavori-h1":"Work","lavori-sub":"Choose a category",
+  "f-all":"All","f-sport":"Sport","f-cultura":"Culture &amp; territory","f-corporate":"Corporate","f-brand":"Commercial brand","f-social":"Social","f-podcast":"Podcast","f-ristorazione":"Food &amp; restaurants",
+  "back-lavori":"← Back to work",
+  "design-h1":"Design","design-sub":"Graphic · Editorial · Wayfinding",
+  "df-all":"All","df-brand":"Brand &amp; identity","df-print":"Editorial / print","df-wayfinding":"Wayfinding",
+  "back-design":"← Back to design",
+  "manifesto":"For three years I've been telling stories through images. <span class=\"mut\">Sport, brands, people: everywhere I look for the same thing — the moment a scene becomes a story.</span>",
+  "bio":"I work as a <strong>freelance videomaker and photographer</strong> in Bologna. One of my most ongoing collaborations is <strong>Fortitudo Pallacanestro Bologna</strong>, where I handle courtside filming and social content. I move between sport, corporate, brand and social, with an eye that comes from photography and an engineer's mind — used to taking problems apart and putting them back together.",
+  "passion-label":"Off set",
+  "passion-lead":"When I'm not filming, I fly.",
+  "passion-body":"I'm earning my <strong>VDS ultralight licence</strong> on a <strong>Tecnam P92</strong>, out of Ozzano dell'Emilia, with the idea of reaching an ATPL one day. It isn't a service I offer: it's the thing that reminds me why I love framing a shot. Changing altitude, after all, is just another way of choosing a perspective.",
+  "servizi":"Services",
+  "svc1-n":"Video","svc1-l":"<li>Sport &amp; highlights</li><li>Corporate</li><li>Brand &amp; ads</li><li>Social &amp; reels</li>",
+  "svc2-n":"Photography","svc2-l":"<li>Sport &amp; action</li><li>Portraits</li><li>Events</li><li>Editorial</li>",
+  "svc3-n":"Post-production","svc3-l":"<li>Editing</li><li>Color grading</li><li>Social formats</li>",
+  "clients-label":"Who I've worked with","cl-sport":"sports organisations","cl-az":"companies","cl-brand":"local brands",
+  "contact-big":"Got a project<br>in mind?",
+  "footer-made":"Made with care",
+  "yt-link":"Watch on YouTube ↗"
+};
+function applyLang(lang){
+  LANG = (lang==='en')?'en':'it';
+  try{ localStorage.setItem('lang', LANG); }catch(e){}
+  document.documentElement.lang = LANG;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    if(el._it===undefined) el._it = el.innerHTML;
+    const k = el.getAttribute('data-i18n');
+    el.innerHTML = (LANG==='en' && I18N_EN[k]!==undefined) ? I18N_EN[k] : el._it;
+  });
+  document.querySelectorAll('[data-l]').forEach(b=> b.classList.toggle('active', b.getAttribute('data-l')===LANG));
+  if(typeof buildWorks==='function') buildWorks();
+  if(typeof buildDesign==='function') buildDesign();
+  const h=(location.hash||'').slice(1);
+  if(h.startsWith('p/')||h.startsWith('d/')) route();
+}
 
 /* ---- costruisci la lista Lavori ---- */
 const worksEl = document.getElementById('works');
-worksEl.innerHTML = PROJECTS.slice()
-  .sort((a,b) => a.title.localeCompare(b.title, 'it', {sensitivity:'base'}))
-  .map(p => {
-  const cover = p.videos.find(v => v.yt);
-  const n = p.videos.length;
-  const count = n ? `<span class="work-row__count">· ${n} video</span>` : '';
-  return `<a class="work-row reveal" href="#p/${p.id}" data-cat="${p.cat}" ${cover?`data-thumb="${ytThumb(cover.yt)}"`:`data-ph="${CAT_GRAD[p.cat]||'g-mono'}"`}>
-    <span class="work-row__title">${esc(p.title)}</span>
-    <span class="work-row__cat">${catLabel(p.cat)} ${count}</span>
-  </a>`;
-}).join('');
+function buildWorks(){
+  worksEl.innerHTML = PROJECTS.slice()
+    .sort((a,b) => a.title.localeCompare(b.title, 'it', {sensitivity:'base'}))
+    .map(p => {
+    const cover = p.videos.find(v => v.yt);
+    const n = p.videos.length;
+    const count = n ? `<span class="work-row__count">· ${n} video</span>` : '';
+    return `<a class="work-row reveal" href="#p/${p.id}" data-cat="${p.cat}" ${cover?`data-thumb="${ytThumb(cover.yt)}"`:`data-ph="${CAT_GRAD[p.cat]||'g-mono'}"`}>
+      <span class="work-row__title">${esc(p.title)}</span>
+      <span class="work-row__cat">${catLabel(p.cat)} ${count}</span>
+    </a>`;
+  }).join('');
+  const af = document.querySelector('#view-lavori .filters button.active');
+  if(af){ const c=af.getAttribute('data-cat'); document.querySelectorAll('.work-row').forEach(r => r.style.display=(c==='all'||r.dataset.cat.split(' ').includes(c))?'':'none'); }
+}
+buildWorks();
 
 /* ---- Design: griglia progetti + pagina del singolo progetto ---- */
 const designById = Object.fromEntries(DESIGN.map(p => [p.id, p]));
 const dgridEl = document.getElementById('dgrid');
-dgridEl.innerHTML = DESIGN.map(p => {
-  const cover = p.images[0];
-  const media = cover
-    ? `<img src="${cover.src}" alt="${esc(cover.alt||p.title)}">`
-    : `<span class="dtile__plate"><span>${esc(DCAT_LABEL[p.cat]||'')}</span></span>`;
-  return `<a class="dtile reveal" href="#d/${p.id}" data-dcat="${p.cat}">
-    <span class="dtile__img">${media}</span>
-    <span class="dtile__row"><span class="dtile__t">${esc(p.title)}</span><span class="dtile__c">${DCAT_LABEL[p.cat]||''}</span></span>
-  </a>`;
-}).join('');
+function buildDesign(){
+  dgridEl.innerHTML = DESIGN.map(p => {
+    const cover = p.images[0];
+    const media = cover
+      ? `<img src="${cover.src}" alt="${esc(cover.alt||p.title)}">`
+      : `<span class="dtile__plate"><span>${esc(dcatLabel(p.cat))}</span></span>`;
+    return `<a class="dtile reveal" href="#d/${p.id}" data-dcat="${p.cat}">
+      <span class="dtile__img">${media}</span>
+      <span class="dtile__row"><span class="dtile__t">${esc(p.title)}</span><span class="dtile__c">${dcatLabel(p.cat)}</span></span>
+    </a>`;
+  }).join('');
+  const af = document.querySelector('#view-design .filters button.active');
+  if(af){ const c=af.getAttribute('data-dcat'); document.querySelectorAll('.dtile').forEach(t => t.style.display=(c==='all'||t.dataset.dcat===c)?'':'none'); }
+}
+buildDesign();
 
 const dTitle=document.getElementById('dTitle'), dCat=document.getElementById('dCat'),
       dDesc=document.getElementById('dDesc'), dGallery=document.getElementById('dGallery');
 function renderDesign(id){
   const p = designById[id]; if(!p) return false;
   dTitle.textContent = p.title;
-  dCat.textContent = DCAT_LABEL[p.cat] || '';
-  dDesc.textContent = p.desc || ''; dDesc.style.display = p.desc ? '' : 'none';
+  dCat.textContent = dcatLabel(p.cat);
+  const dd = (LANG==='en' && p.desc_en) ? p.desc_en : (p.desc||''); dDesc.textContent = dd; dDesc.style.display = dd ? '' : 'none';
   if(p.images.length){
     dGallery.style.display = '';
     dGallery.innerHTML = p.images.map(im => `
@@ -618,7 +690,7 @@ function renderDesign(id){
     dGallery.querySelectorAll('.dimg').forEach(b => b.addEventListener('click', () => openModal(b)));
   } else {
     dGallery.style.display = 'block';
-    dGallery.innerHTML = `<p class="muted">Immagini in arrivo.</p>`;
+    dGallery.innerHTML = `<p class="muted">${tr('imgcoming')}</p>`;
   }
   return true;
 }
@@ -648,12 +720,14 @@ function renderProject(id){
   const p = byId[id]; if(!p) return false;
   projTitle.textContent = p.title;
   projCat.textContent = catLabel(p.cat);
+  const pd = (LANG==='en' && p.desc_en) ? p.desc_en : (p.desc||'');
   if(p.link){
-    projDesc.innerHTML = esc(p.desc||'') + '<br><a class="proj-link" href="'+p.link+'" target="_blank" rel="noopener">'+esc(p.linkLabel||'Vai al sito')+' ↗</a>';
+    const ll = (LANG==='en') ? (p.linkLabel_en||'Visit site') : (p.linkLabel||'Vai al sito');
+    projDesc.innerHTML = esc(pd) + '<br><a class="proj-link" href="'+p.link+'" target="_blank" rel="noopener">'+esc(ll)+' ↗</a>';
   } else {
-    projDesc.textContent = p.desc || '';
+    projDesc.textContent = pd;
   }
-  projDesc.style.display = (p.desc || p.link) ? '' : 'none';
+  projDesc.style.display = (pd || p.link) ? '' : 'none';
   const vcardHTML = v => `
       <button class="vcard" data-yt="${v.yt||''}" data-video="${v.video||''}" data-title="${esc(v.title)}" data-desc="${esc(v.desc)}">
         <span class="vcard__thumb" style="${v.yt?`background-image:url('${ytThumb(v.yt)}')`:''}"><span class="vcard__play"></span></span>
@@ -661,7 +735,7 @@ function renderProject(id){
       </button>`;
   const igHTML = e => { const u = (e.ig||'').replace(/\/?$/, '/');
     return `<figure class="ig-embed"><iframe src="${u}embed" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen></iframe>
-      <a class="ig-link" href="${u}" target="_blank" rel="noopener">Guarda su Instagram ↗</a></figure>`; };
+      <a class="ig-link" href="${u}" target="_blank" rel="noopener">${tr('instagram')}</a></figure>`; };
   const imgHTML = im => `<button class="dimg" data-img="${im.src}" data-title="${esc(im.alt||p.title)}"><img src="${im.src}" alt="${esc(im.alt||p.title)}" loading="lazy"></button>`;
   const hasV = p.videos && p.videos.length, hasE = p.embeds && p.embeds.length, hasI = p.images && p.images.length;
 
@@ -674,14 +748,14 @@ function renderProject(id){
   } else if(p.playlist){
     projGrid.style.display = 'block';
     projGrid.innerHTML = `<div class="proj-player"><iframe src="https://www.youtube-nocookie.com/embed/${p.playlistFirst||''}?list=${p.playlist}&rel=0" allow="fullscreen; encrypted-media" allowfullscreen></iframe></div>
-      <p class="muted proj-player-note">La mostra completa: usa la lista del player per scorrere tutti i video.</p>`;
+      <p class="muted proj-player-note">${tr('plnote')}</p>`;
   } else {
     const parts = [];
     if(hasV) parts.push(`<div class="proj-grid-inner">${p.videos.map(vcardHTML).join('')}</div>`);
     if(hasI) parts.push(`<div class="dproj-gallery">${p.images.map(imgHTML).join('')}</div>`);
     if(hasE) parts.push(`<div class="embed-grid">${p.embeds.map(igHTML).join('')}</div>`);
     projGrid.style.display = 'block';
-    projGrid.innerHTML = parts.length ? parts.join('') : `<p class="muted">Contenuti in arrivo.</p>`;
+    projGrid.innerHTML = parts.length ? parts.join('') : `<p class="muted">${tr('coming')}</p>`;
   }
   projGrid.querySelectorAll('.vcard, .dimg').forEach(c => c.addEventListener('click', () => openModal(c)));
   return true;
@@ -695,6 +769,10 @@ function route(){
 }
 addEventListener('hashchange', route);
 route();
+
+/* ---- toggle lingua ---- */
+document.querySelectorAll('[data-l]').forEach(b=> b.addEventListener('click', ()=> applyLang(b.getAttribute('data-l'))) );
+applyLang(LANG);
 
 /* ---- preloader ---- */
 (function(){ const done=()=>document.body.classList.add('loaded');
